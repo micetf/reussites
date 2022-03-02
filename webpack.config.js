@@ -1,5 +1,7 @@
+const path = require("path");
 const { ProvidePlugin } = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     mode: "development",
@@ -8,6 +10,12 @@ module.exports = {
     devServer: {
         static: "./dist",
         hot: true,
+    },
+    output: {
+        filename: "js/[name].js",
+        path: path.resolve(__dirname, "dist"),
+
+        clean: true,
     },
     module: {
         rules: [
@@ -48,6 +56,11 @@ module.exports = {
                 },
             },
             {
+                test: /\.svg$/i,
+                issuer: /\.[jt]sx?$/,
+                use: ["@svgr/webpack"],
+            },
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: [
@@ -68,10 +81,10 @@ module.exports = {
         ],
     },
     plugins: [
-        new ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
+        new MiniCssExtractPlugin({ filename: "./css/[name].css" }),
+        new HtmlWebpackPlugin({
+            template: "./src/index.html",
+            favicon: "./src/favicon.ico",
         }),
-        new MiniCssExtractPlugin({ filename: "./css/main.css" }),
     ],
 };

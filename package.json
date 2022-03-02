@@ -19,6 +19,7 @@
         "postcss": "^8.4.6",
         "postcss-loader": "^6.2.1",
         "postcss-preset-env": "^7.4.1",
+        "@svgr/webpack": "^6.2.1",
         "sass": "^1.49.9",
         "sass-loader": "^12.6.0",
         "webpack": "^5.69.1",
