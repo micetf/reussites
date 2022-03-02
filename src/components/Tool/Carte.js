@@ -29,19 +29,20 @@ const drawCarte = ({ valeurPioche, valeurAttendue, valeurActuelle }) => {
     }
 
     if (valeurAttendue === valeurActuelle) {
+        const start = withPioche ? DIM : 0;
         ctx.fillStyle = "#1BF2A3";
-        ctx.fillRect(0, 0, DIM, DIM);
-        ctx.strokeRect(0, 0, DIM, DIM);
+        ctx.fillRect(0, start, DIM, DIM);
+        ctx.strokeRect(0, start, DIM, DIM);
         ctx.fillStyle = "black";
-        ctx.fillText(valeurActuelle.toString(), DIM / 2, DIM / 2);
+        ctx.fillText(valeurActuelle.toString(), DIM / 2, start + DIM / 2);
     }
 
     if (withPioche) {
         ctx.fillStyle = "#F29422";
-        ctx.fillRect(0, DIM, DIM, DIM);
-        ctx.strokeRect(0, DIM, DIM, DIM);
+        ctx.fillRect(0, 0, DIM, DIM);
+        ctx.strokeRect(0, 0, DIM, DIM);
         ctx.fillStyle = "black";
-        ctx.fillText(valeurPioche.toString(), DIM / 2, DIM + DIM / 2);
+        ctx.fillText(valeurPioche.toString(), DIM / 2, DIM / 2);
     }
     return canvas.toDataURL("image/png");
 };
@@ -76,7 +77,7 @@ function Carte({
     }
 
     return (
-        <div className="align-self-start m-1 border border-primary">
+        <div className="m-1 border border-primary">
             <img
                 onClick={handleImgClick}
                 className="img-fluid rounded-2"

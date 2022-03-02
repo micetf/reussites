@@ -12,7 +12,7 @@ function SelectPlage({ onChange }) {
     return (
         <div className="form-floating my-3">
             <select
-                className="form-select"
+                className="form-select form-select-lg"
                 name="plage"
                 value={plage}
                 onChange={handleChange}

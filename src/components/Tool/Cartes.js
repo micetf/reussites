@@ -90,7 +90,7 @@ function Cartes({ cartesOrdonnees, cartesMelangees, changerMessage }) {
     }
 
     return (
-        <div className="d-flex justify-content-around my-3">
+        <div className="cartes d-flex justify-content-around align-items-end my-3">
             {cartesOrdonnees.map((attendue, index) => (
                 <Carte
                     key={index}

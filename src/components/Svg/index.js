@@ -8,5 +8,7 @@ import search from "./zondicons/search.svg";
 export const SEARCH = search;
 import reload from "./zondicons/reload.svg";
 export const RELOAD = reload;
+import aide from "./zondicons/question.svg";
+export const AIDE = aide;
 
 export default ({ src }) => src({ height: "1em", fill: "#f8f9fa" });

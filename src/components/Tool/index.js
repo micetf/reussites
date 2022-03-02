@@ -7,6 +7,7 @@ import SelectPlage from "./SelectPlage.js";
 import Cartes from "./Cartes.js";
 import Message from "./Message.js";
 import Aide from "./Aide.js";
+import Svg, { AIDE } from "../Svg/index.js";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -58,19 +59,23 @@ function App() {
     return (
         <div className="container-fluid">
             <div className="d-flex justify-content-end">
-                <button className="btn btn-primary" onClick={handleClick}>
-                    Aide
+                <button
+                    className="btn btn-primary"
+                    onClick={handleClick}
+                    title="Comment utiliser cette application web ?"
+                >
+                    <Svg src={AIDE} />
                 </button>
             </div>
             <SelectPlage onChange={handlePlageChange} />
 
+            <Message message={message} recommencer={recommencer} />
             <Cartes
                 cartesOrdonnees={cartesOrdonnees}
                 cartesMelangees={cartesMelangees}
                 changerMessage={changerMessage}
             />
 
-            <Message message={message} recommencer={recommencer} />
             <Aide aide={aide} close={closeAide} />
         </div>
     );

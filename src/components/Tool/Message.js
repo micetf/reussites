@@ -3,21 +3,27 @@ import { code } from "./parametres.js";
 
 function Message({ message, recommencer }) {
     const { text, color } = message;
-
+    const partieFinie = message.code === code.FIN_REUSSITE;
+    const messageExiste = message.code !== code.MUET;
     function handleClick(e) {
         e.preventDefault();
         recommencer();
     }
+    function Rejouer() {
+        return (
+            <button className="ms-4 btn btn-primary" onClick={handleClick}>
+                Rejouer <Svg src={RELOAD} />
+            </button>
+        );
+    }
 
-    return message.code === code.MUET ? null : (
-        <div className={"h1 my-3 text-center alert " + color}>
+    return messageExiste ? (
+        <div className={"message h2 my-3 text-center alert " + color}>
             {text}
-            {message.code === code.FIN_REUSSITE && (
-                <button className="ms-4 btn btn-primary" onClick={handleClick}>
-                    Recommencer <Svg src={RELOAD} />
-                </button>
-            )}
+            {partieFinie && <Rejouer />}
         </div>
+    ) : (
+        <div className="message"> </div>
     );
 }
 
