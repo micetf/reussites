@@ -23,7 +23,7 @@ function SelectPlage({ onChange }) {
                 <option value={31}>31 à 40</option>
                 <option value={41}>41 à 50</option>
             </select>
-            <label htmlFor="plage">Choisir un jeu de carte </label>
+            <label htmlFor="plage">Choisir un jeu de cartes </label>
         </div>
     );
 }
