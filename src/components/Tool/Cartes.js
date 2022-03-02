@@ -59,7 +59,7 @@ function Cartes({ cartesOrdonnees, cartesMelangees, changerMessage }) {
               })
             : changerMessage({
                   code: code.MUET,
-                  color: "alert-success",
+                  color: "",
                   text: "",
               });
     }
