@@ -1,13 +1,13 @@
 import modal from "bootstrap/js/dist/modal";
 import { useEffect, useRef } from "react";
 
-function Aide({ aide, fermerAide }) {
+function Aide({ visibiliteAide, fermerAide }) {
     const aideModal = useRef(null);
 
     useEffect(() => {
         const modalHandler = new modal(aideModal.current);
-        if (aide) modalHandler.show();
-    }, [aide]);
+        if (visibiliteAide) modalHandler.show();
+    }, [visibiliteAide]);
 
     function handleClick(e) {
         e.preventDefault();
