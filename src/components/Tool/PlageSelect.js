@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-function PlageSelect({ selectPlage }) {
+function PlageSelect({ selectionnerPlage }) {
     const [plage, setPlage] = useState(11);
 
     function handleChange(e) {
         e.preventDefault();
         const nouvellePlage = parseInt(e.target.value, 10);
         setPlage(nouvellePlage);
-        selectPlage(nouvellePlage);
+        selectionnerPlage(nouvellePlage);
     }
     return (
         <div className="form-floating my-3">

@@ -1,9 +1,9 @@
 import Svg, { AIDE } from "../Svg/index.js";
 
-function AideButton({ showAide }) {
+function AideButton({ ouvrirAide }) {
     function handleClick(e) {
         e.preventDefault();
-        showAide();
+        ouvrirAide();
     }
 
     return (

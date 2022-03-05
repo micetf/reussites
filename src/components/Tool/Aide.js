@@ -1,7 +1,7 @@
 import modal from "bootstrap/js/dist/modal";
 import { useEffect, useRef } from "react";
 
-function Aide({ aide, close }) {
+function Aide({ aide, fermerAide }) {
     const aideModal = useRef(null);
 
     useEffect(() => {
@@ -11,7 +11,7 @@ function Aide({ aide, close }) {
 
     function handleClick(e) {
         e.preventDefault();
-        close();
+        fermerAide();
     }
     return (
         <div
