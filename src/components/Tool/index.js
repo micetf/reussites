@@ -3,11 +3,12 @@ import { useReducer, useState } from "react";
 import { code } from "./parametres.js";
 import { tirerCartes, melangerCartes } from "../../utils/gererCartes.js";
 
-import SelectPlage from "./SelectPlage.js";
+import PlageSelect from "./PlageSelect.js";
 import Cartes from "./Cartes.js";
 import Message from "./Message.js";
 import Aide from "./Aide.js";
-import Svg, { AIDE } from "../Svg/index.js";
+import RejouerButton from "./RejouerButton.js";
+import AideButton from "./AideButton.js";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -29,6 +30,7 @@ function reducer(state, action) {
             return state;
     }
 }
+
 function App() {
     const [aide, setAide] = useState(false);
     const [{ cartesOrdonnees, cartesMelangees, message }, dispatch] =
@@ -37,7 +39,7 @@ function App() {
             message: { code: code.MUET },
         });
 
-    function handlePlageChange(nouvellePlage) {
+    function selectPlage(nouvellePlage) {
         dispatch({ type: "majPlage", plage: nouvellePlage });
     }
 
@@ -46,37 +48,32 @@ function App() {
             dispatch({ type: "majMessage", message: nouveauMessage });
         }
     }
-    function recommencer() {
+    function rejouer() {
         dispatch({ type: "recommencer" });
     }
-    function handleClick(e) {
-        e.preventDefault();
+
+    function showAide() {
         setAide(true);
     }
+
     function closeAide() {
         setAide(false);
     }
+
     return (
         <div className="container-fluid">
-            <div className="d-flex justify-content-end">
-                <button
-                    className="btn btn-primary"
-                    onClick={handleClick}
-                    title="Comment utiliser cette application web ?"
-                >
-                    <Svg src={AIDE} />
-                </button>
-            </div>
-            <SelectPlage onChange={handlePlageChange} />
-
-            <Message message={message} recommencer={recommencer} />
+            <AideButton showAide={showAide} />
+            <PlageSelect selectPlage={selectPlage} />
+            <Message message={message} />
             <Cartes
                 cartesOrdonnees={cartesOrdonnees}
                 cartesMelangees={cartesMelangees}
                 changerMessage={changerMessage}
             />
-
             <Aide aide={aide} close={closeAide} />
+            {message.code === code.FIN_REUSSITE && (
+                <RejouerButton rejouer={rejouer} />
+            )}
         </div>
     );
 }
